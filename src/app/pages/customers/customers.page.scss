@@ -1,0 +1,33 @@
+ion-content{
+	--background:#f4f6f9;
+	background:#f4f6f9;
+	--keyboard-offset: 0 !important;
+}
+.iconStyle{
+	font-size:30px;
+	color:#ffffff;
+}
+/*all data form*/
+.customersInfo{
+	background: white;
+	border-radius: 10px;
+	margin: 0.5rem !important;
+	padding: 7px;
+	box-shadow: 0 0 15px 0 rgba(128, 128, 128, 0.39);
+	cursor: pointer;
+}
+.customersName{
+	font-size:15px;
+	font-weight:bold;
+}
+.customersInformation{
+	font-size:14px;
+}
+.infoIcon{
+	font-size:17px;
+	color:#FF7901;
+}
+.menuIcon{
+	font-size:25px;
+	color:#FF7901;
+}

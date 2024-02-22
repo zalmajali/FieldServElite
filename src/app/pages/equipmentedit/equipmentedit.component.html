@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+   <form style="display: contents;" (ngSubmit)="functionEditNewEquipments()">	
+      <div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorItemName}}">
+                <ion-select interface="popover" placeholder="{{select}}" value="{{itemName}}" label="{{equipments_name_item}}" (ionChange)="selectItemName($event)" toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnEquipmentsOpArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorItemName == 0">{{equipments_name_item_add}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorQuantity}}" lines="none">
+            	<ion-input type="text" label="{{equipments_quantity}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="quantity" (ionInput)="checkQuantity($event)"></ion-input>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorQuantity == 0">{{equipments_quantity_add}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorNotes}}" lines="none">
+ 				<ion-textarea placeholder="{{equipments_nots}}" [ngModelOptions]="{standalone: true}" (ionInput)="checkNotes($event)" mode='ios' rows='4' [(ngModel)]="notes"></ion-textarea>
+ 			</ion-item>
+            <div class="errorMessage" *ngIf="isErrorNotes == 0">{{equipments_nots_add}}</div>
+        </div>
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" disabled="{{!isdisabled}}" (click)="functionEditNewEquipments()">{{edit_equipments}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

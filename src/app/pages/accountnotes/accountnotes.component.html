@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <div *ngIf="accountNotes!=0" class="padding-top_10 padding-left_10 padding-right_10">	
+        <div *ngFor="let items of returnAccountNotesArray;let i=index">
+            <div class="noteInformation ">
+                {{items.note}}
+            </div>
+            <div class="text-align_end noteDates">{{items.addTime}}</div>
+            <div class="noteLine"></div>
+        </div>
+    </div>
+    <div *ngIf="accountNotes==0">
+        <div class="divIconNoOrders">
+            <img src="../../assets/images/noUse.png" class="imageIcon">
+        </div>
+        <div class="errorNoDataSmall">{{error_note_small}}</div>
+    </div>
+</ion-content>

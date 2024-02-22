@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="padding-top_10 padding-left_10 padding-right_10">
+	<div class="noteInformation" *ngIf="type==1">{{data}}</div>
+    <div *ngIf="type==2">
+    	<img src="{{data}}" class="image">
+    </div>
+    <div *ngIf="type==3">
+    	<div *ngFor="let items of data">
+        	<div><img src="{{items.file}}" class="image"></div>
+            <div (click)="functionDeleteImage(items.id)"><ion-icon name="trash" class="menuIcon"></ion-icon></div>
+        </div>
+    </div>	
+  </div>
+</ion-content>

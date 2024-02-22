@@ -1,0 +1,288 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+ion-toolbar{--background:#FF7901;color:#ffffff;text-align: center !important;}
+.margin_10{margin:10px !important;}
+.margin_15{margin:15px !important;}
+.margin_20{margin:20px !important;}
+.margin_25{margin:25px !important;}
+.margin_30{margin:30px !important;}
+.margin_35{margin:35px !important;}
+.margin_40{margin:40px !important;}
+.margin-left_10{margin-left:10px !important;}
+.margin-left_15{margin-left:15px !important;}
+.margin-left_20{margin-left:20px !important;}
+.margin-left_25{margin-left:25px !important;}
+.margin-left_30{margin-left:30px !important;}
+.margin-left_35{margin-left:35px !important;}
+.margin-left_40{margin-left:40px !important;}
+.margin-right_10{margin-right:10px !important;}
+.margin-right_15{margin-right:15px !important;}
+.margin-left_20{margin-right:20px !important;}
+.margin-left_25{margin-right:25px !important;}
+.margin-left_30{margin-right:30px !important;}
+.margin-left_35{margin-right:35px !important;}
+.margin-left_40{margin-right:40px !important;}
+.margin-top_10{margin-top:10px !important;}
+.margin-top_15{margin-top:15px !important;}
+.margin-top_20{margin-top:20px !important;}
+.margin-top_25{margin-top:25px !important;}
+.margin-top_30{margin-top:30px !important;}
+.margin-top_35{margin-top:35px !important;}
+.margin-top_40{margin-top:40px !important;}
+.margin-bottom_10{margin-bottom:10px !important;}
+.margin-bottom_15{margin-bottom:15px !important;}
+.margin-bottom_20{margin-bottom:20px !important;}
+.margin-bottom_25{margin-bottom:25px !important;}
+.margin-bottom_30{margin-bottom:30px !important;}
+.margin-bottom_35{margin-top:35px !important;}
+.margin-bottom_40{margin-bottom:40px !important;}
+.padding_1{padding:1px !important;}
+.padding_2{padding:2px !important;}
+.padding_3{padding:3px !important;}
+.padding_4{padding:4px !important;}
+.padding_5{padding:5px !important;}
+.padding_6{padding:6px !important;}
+.padding_7{padding:7px !important;}
+.padding_8{padding:8px !important;}
+.padding_9{padding:9px !important;}
+.padding_10{padding:10px !important;}
+.padding_11{padding:11px !important;}
+.padding_12{padding:12px !important;}
+.padding_13{padding:13px !important;}
+.padding_14{padding:14px !important;}
+.padding_15{padding:15px !important;}
+.padding_16{padding:16px !important;}
+.padding_17{padding:17px !important;}
+.padding_18{padding:18px !important;}
+.padding_19{padding:19px !important;}
+.padding_20{padding:20px !important;}
+.padding-left_1{padding-left:1px !important;}
+.padding-left_2{padding-left:2px !important;}
+.padding-left_3{padding-left:3px !important;}
+.padding-left_4{padding-left:4px !important;}
+.padding-left_5{padding-left:5px !important;}
+.padding-left_6{padding-left:6px !important;}
+.padding-left_7{padding-left:7px !important;}
+.padding-left_8{padding-left:8px !important;}
+.padding-left_9{padding-left:9px !important;}
+.padding-left_10{padding-left:10px !important;}
+.padding-left_11{padding-left:11px !important;}
+.padding-left_12{padding-left:12px !important;}
+.padding-left_13{padding-left:13px !important;}
+.padding-left_14{padding-left:14px !important;}
+.padding-left_15{padding-left:15px !important;}
+.padding-left_16{padding-left:16px !important;}
+.padding-left_17{padding-left:17px !important;}
+.padding-left_18{padding-left:18px !important;}
+.padding-left_19{padding-left:19px !important;}
+.padding-left_20{padding-left:20px !important;}
+.padding-right_1{padding-right:1px !important;}
+.padding-right_2{padding-right:2px !important;}
+.padding-right_3{padding-right:3px !important;}
+.padding-right_4{padding-right:4px !important;}
+.padding-right_5{padding-right:5px !important;}
+.padding-right_6{padding-right:6px !important;}
+.padding-right_7{padding-right:7px !important;}
+.padding-right_8{padding-right:8px !important;}
+.padding-right_9{padding-right:9px !important;}
+.padding-right_10{padding-right:10px !important;}
+.padding-right_11{padding-right:11px !important;}
+.padding-right_12{padding-right:12px !important;}
+.padding-right_13{padding-right:13px !important;}
+.padding-right_14{padding-right:14px !important;}
+.padding-right_15{padding-right:15px !important;}
+.padding-right_16{padding-right:16px !important;}
+.padding-right_17{padding-right:17px !important;}
+.padding-right_18{padding-right:18px !important;}
+.padding-right_19{padding-right:19px !important;}
+.padding-right_20{padding-right:20px !important;}
+.padding-top_1{padding-top:1px !important;}
+.padding-top_2{padding-top:2px !important;}
+.padding-top_3{padding-top:3px !important;}
+.padding-top_4{padding-top:4px !important;}
+.padding-top_5{padding-top:5px !important;}
+.padding-top_6{padding-top:6px !important;}
+.padding-top_7{padding-top:7px !important;}
+.padding-top_8{padding-top:8px !important;}
+.padding-top_9{padding-top:9px !important;}
+.padding-top_10{padding-top:10px !important;}
+.padding-top_11{padding-top:11px !important;}
+.padding-top_12{padding-top:12px !important;}
+.padding-top_13{padding-top:13px !important;}
+.padding-top_14{padding-top:14px !important;}
+.padding-top_15{padding-top:15px !important;}
+.padding-top_16{padding-top:16px !important;}
+.padding-top_17{padding-top:17px !important;}
+.padding-top_18{padding-top:18px !important;}
+.padding-top_19{padding-top:19px !important;}
+.padding-top_20{padding-top:20px !important;}
+.padding-bottom_1{padding-bottom:1px !important;}
+.padding-bottom_2{padding-bottom:2px !important;}
+.padding-bottom_3{padding-bottom:3px !important;}
+.padding-bottom_4{padding-bottom:4px !important;}
+.padding-bottom_5{padding-bottom:5px !important;}
+.padding-bottom_6{padding-bottom:6px !important;}
+.padding-bottom_7{padding-bottom:7px !important;}
+.padding-bottom_8{padding-bottom:8px !important;}
+.padding-bottom_9{padding-bottom:9px !important;}
+.padding-bottom_10{padding-bottom:10px !important;}
+.padding-bottom_11{padding-bottom:11px !important;}
+.padding-bottom_12{padding-bottom:12px !important;}
+.padding-bottom_13{padding-bottom:13px !important;}
+.padding-bottom_14{padding-bottom:14px !important;}
+.padding-bottom_15{padding-bottom:15px !important;}
+.padding-bottom_16{padding-bottom:16px !important;}
+.padding-bottom_17{padding-bottom:17px !important;}
+.padding-bottom_18{padding-bottom:18px !important;}
+.padding-bottom_19{padding-bottom:19px !important;}
+.padding-bottom_20{padding-bottom:20px !important;}
+.width_10_per{width:10% !important;}
+.width_20_per{width:20% !important;}
+.width_30_per{width:30% !important;}
+.width_40_per{width:40% !important;}
+.width_50_per{width:50% !important;}
+.width_60_per{width:60% !important;}
+.width_70_per{width:70% !important;}
+.width_80_per{width:80% !important;}
+.width_90_per{width:90% !important;}
+.width_100_per{width:100% !important;}
+.width_50_px{width:50px !important;}
+.hight_50_px{height:50px !important;}
+.text-align_center{text-align:center}
+.text-align_end{text-align:end}
+.text-align_justify{text-align:justify}
+.text-align_left{text-align:left}
+.text-align_right{text-align:right}
+.text-align_start{text-align:start}
+.ionItemStyle{
+	border-radius: 8px;
+    border: 1px solid #FF7901;
+	--padding-start:8px;
+	--inner-padding-end:8px;
+	background:#ffffff;
+	--background:#ffffff
+}
+.ionItemStyleNoColor{
+	border-radius: 8px;
+    border: none;
+	--padding-start:8px;
+	--inner-padding-end:8px;
+	background:none;
+	--background:none
+}
+.ionItemStyleError{
+    border: 1px solid red !important;
+}
+.ionItemStyleSuccess{
+    border: 1px solid green !important;
+}
+ion-item{
+	--min-height:42px;
+}
+.errorMessage{
+	text-align: start;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 13px;
+    padding-top: 2px;
+    color: red;
+}
+ion-button{
+	--background: #FF7901;
+	--background-activated: #f47920;
+	--background-activated-opacity: #f47920;
+	--color-activated: black;
+	--ripple-color: black;
+	--border-radius: 8px;
+	    min-height: 45px;
+}
+ion-select::part(icon) { 
+	color: #b6b6b5;
+	opacity: 1;
+}
+ion-input{
+	--placeholder-color:#b6b6b5;
+	--placeholder-opacity:1;
+	--padding-top:10px;
+	color:red;
+	font-size:100px;
+	font-family:auto;
+}
+ion-checkbox{
+	--background:#ffffff;
+	--background-checked :#FF7901;
+	--checkbox-background-checked: #FF7901;
+	--border-color: #FF7901;
+	--border-color-checked: #FF7901;
+	--size:23px;
+	font-size:14px;
+}
+.select-wrapper{color: red !important;}
+.loading-wrapper{
+	border-radius:5px !important;
+	background:#FF7901 !important;
+	padding-inline-start:28px !important;
+	padding-inline-end:11px !important;
+	--spinner-color:#ffffff;
+}
+.alertBac{
+	--background: linear-gradient(90deg, rgba(255,121,1,1) 0%, rgba(231,109,0,1) 87%) !important;
+}
+.alert-message.sc-ion-alert-ios {
+  color: #ffffff;
+  font-size:17px;
+}
+.alert-button.sc-ion-alert-ios{
+	color: #ffffff;
+	font-weight:normal !important;
+	font-size: 17px;
+    padding-bottom: 10px;
+}
+.label-text{
+	overflow:visible !important;
+}
+.toastStyle{
+	--background: #000001 !important;
+	--color: #ffffff;
+	--end:0px;
+	--start:0px;
+	--border-radius:0px;
+	--width:100%;
+	--max-width:100%;
+	--box-shadow:none;
+	font-size:12px;
+	text-align:start;
+	font-weight: bold;
+}
+ion-modal{
+	--background: none; 
+	--box-shadow:0px !important;
+}
+ion-modal{
+--width: 100% !important;
+    --height: 100% !important;
+}

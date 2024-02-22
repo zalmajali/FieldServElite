@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+   <form style="display: contents;" (ngSubmit)="functionAddFollowup()">	
+      <div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorEmployee}}">
+                <ion-select interface="popover" placeholder="{{select}}" value="{{employee}}" label="{{workorder_followup_employee}}" (ionChange)="selectEmployee($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option value="0">{{select}}</ion-select-option>
+                    <ion-select-option *ngFor="let items of returnemployeeArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorEmployee == 0">{{workorder_followup_employee_add}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorTime}}" lines="none">
+            	<ion-input type="text" label="{{workorder_followup_time}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="contactTime" (ionInput)="checkTime($event)"></ion-input>
+            	<ion-icon slot="end" class="barcode" name="time" (click)="functiondatePuckerStart()"> </ion-icon>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorTime == 0">{{workorder_followup_time_add}}</div>
+        </div>
+         <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorNote}}" lines="none">
+ 				<ion-textarea placeholder="{{workorder_followup_note}}" [ngModelOptions]="{standalone: true}" (ionInput)="checkNote($event)" mode='ios' rows='4' [(ngModel)]="contactNote"></ion-textarea>
+ 			</ion-item>
+            <div class="errorMessage" *ngIf="isErrorNote == 0">{{workorder_followup_note_add}}</div>
+        </div>     
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" disabled="{{!isdisabled}}" (click)="functionAddFollowup()">{{workorder_followup_add}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

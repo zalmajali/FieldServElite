@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+   <form style="display: contents;" (ngSubmit)="functionPropertyNumberTask()">	
+      <div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorNumber}}" lines="none">
+            	<ion-input type="text" label="{{number}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="propertyNumber" (ionInput)="checkPropertyNumber($event)"></ion-input>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorNumber == 0">{{number_add}}</div>
+        </div>
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" disabled="{{!isdisabled}}" (click)="functionPropertyNumberTask()">{{save}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

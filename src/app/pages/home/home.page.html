@@ -1,0 +1,104 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-title class="todayTime">{{today}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}">
+       <div *ngIf="showNotificationIcon == 1"><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <div *ngIf="checkRoute == 0 && checkRoute != 2">
+    	<div *ngIf="workorders!=0">
+            <div class="margin-top_10 margin-left_10  margin-right_10">
+                <ion-item lines="none" class="ionItemStyleSmall">
+                    <ion-select value="1" interface="popover" label="{{workorders_filter}}" color="red" toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                        <ion-select-option value="0">select</ion-select-option>
+                        <ion-select-option value="1">asdasd</ion-select-option>
+                        <ion-select-option value="2">asdasdads</ion-select-option>
+                        <ion-select-option value="3">asdasdasd</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </div>
+            <div *ngFor="let items of returnWorkordersArray;let i=index" class="workordersName">
+                <div>
+                    <ion-grid style="padding:0px">
+                        <ion-row style="padding:0px">
+                            <ion-col size="11" class="text-align_start">
+                                <div class="workEventName padding-left_5 padding-right_5"><span>{{items.ordersId}}|</span> {{items.eventName}}</div>
+                                <div class="workordersInformation padding-top_3 padding-left_5 padding-right_5" *ngIf="items.firstName !== null">{{items.firstName}} {{items.middleName}} {{items.lastName}}</div>
+                                <div class="workordersInformation padding-top_3" *ngIf="items.streetName !== null"><ion-icon name="location" class="infoIcon"></ion-icon>{{items.streetNo}}, {{items.streetName}}, {{items.addressLineOne}}</div>
+                                <div class="workordersInformation padding-top_3 time" *ngIf="items.scheduledTimeType == 1 && items.specificTime !== null">
+                                	<ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="6" class="text-align_start">
+                                            	<div><ion-icon name="time" class="infoIcon" style="vertical-align:text-bottom;font-size:18px"></ion-icon> {{items.specificTime}}</div>
+                                            </ion-col>
+                                            <ion-col size="6" class="text-align_end">
+                                            	<div class="durationTime">{{items.scheduleDuration}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                                </div>
+                                <div class="workordersInformation padding-top_3 time" *ngIf="items.scheduledTimeType == 2 && items.rangeStartTime!==null && items.rangeEndTime!==null">
+                                    <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="4" class="text-align_start">
+                                            	<ion-icon name="time" class="infoIcon" style="vertical-align:text-bottom;font-size:18px"></ion-icon> {{items.rangeStartTime}}
+                                            </ion-col>
+                                            <ion-col size="4" class="text-align_end">
+                                            	<ion-icon name="time" class="infoIcon" style="vertical-align:text-bottom;font-size:18px"></ion-icon> {{items.scheduleDuration}}
+                                            </ion-col>
+                                              <ion-col size="4" class="text-align_end">
+                                            	<ion-icon name="time" class="infoIcon" style="vertical-align:text-bottom;font-size:18px"></ion-icon> {{items.rangeEndTime}}
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                                </div>
+                            </ion-col>
+                            <ion-col size="1" class="text-align_end">
+                                <div>
+                                    <ion-icon name="ellipsis-horizontal-outline" id="popover-button_{{i}}" class="menuIcon"></ion-icon>
+                                    <ion-popover trigger="popover-button_{{i}}" [dismissOnSelect]="true">
+                                      <ng-template>
+                                        <ion-content>
+                                          <ion-list>
+                                        	<ion-item [button]="true" [detail]="false" (click)="functionCustomerInformation(items.firstName,items.middleName,items.lastName,items.businessName,items.extraPhone,items.extraMobile,items.extraFax)">{{workorders_options_one}}</ion-item>
+                                            <ion-item [button]="true" [detail]="false" (click)="functionNotifi();">{{workorders_options_tow}}</ion-item>
+                                            <ion-item [button]="true" [detail]="false" (click)="functionStartWorkorder(items.eventName,items.eventId,items.ordersId,items.workSiteAddressId,items.siteAddGeolocation);">{{workorders_options_three}}</ion-item>
+                                            <ion-item [button]="true" [detail]="false" (click)="functionAccountNotes(items.eventId,items.ordersId)">{{workorders_options_fore}}</ion-item>
+                                         	<ion-item [button]="true" [detail]="false" (click)="functionInstructions(items.eventId,items.ordersId)">{{workorders_options_nine}}</ion-item>
+                                            <ion-item [button]="true" [detail]="false" (click)="functionGoLocation(items.siteAddGeolocation)">{{workorders_options_five}}</ion-item>
+                                          	<ion-item [button]="true" [detail]="false" (click)="functionFollowupWorkorder(items.eventId,items.ordersId)">{{workorder_followup}}</ion-item>
+                                            <ion-item [button]="true" [detail]="false" (click)="functionLocatioInformation(items.eventId,items.ordersId,items.workSiteAddressId)">{{workorders_options_seven}}</ion-item>
+                                          </ion-list>
+                                        </ion-content>
+                                      </ng-template>
+                                    </ion-popover>
+                                </div>
+                                <div (click)="functionCallNumber(items.extraMobile)"><ion-icon name="call" class="infoIcon"></ion-icon></div>
+                                <div (click)="functionWorkordernote(items.eventId,items.ordersId,items.workSiteAddressId)"><ion-icon name="alert-circle-outline" class="menuIcon"></ion-icon></div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </div>
+        </div>
+         <div *ngIf="workorders==0">
+            <div class="divIconNoOrders">
+                <img src="../../assets/images/noUse.png" class="imageIcon">
+            </div>
+            <div class="errorNoDataLarge">{{error_no_orders_large}}</div>
+            <div class="errorNoDataSmall">{{error_no_orders_small}}</div>
+        </div>
+    </div>
+    <div *ngIf="checkRoute == 1 && checkRoute != 2">
+        <div class="errorNoDataSmallOne">{{error_no_orders_routes}}</div>
+    	<div class="divButtonNoOrders">
+        	 <ion-button class="width_60_per" mode="ios" (click)="functionEmployeeStartRoute()">{{start_route}}</ion-button>
+        </div>
+    </div>
+</ion-content>

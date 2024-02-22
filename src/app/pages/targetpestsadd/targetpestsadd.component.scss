@@ -1,0 +1,92 @@
+ion-content{
+	--background:#f4f6f9;
+	background:#f4f6f9;
+	--keyboard-offset: 0 !important;
+}
+.iconStyle{
+	font-size:30px;
+	color:#ffffff;
+}
+/*all data form*/
+ion-select {
+	--placeholder-color:#b6b6b5;
+	--placeholder-opacity:1;
+	color:#b6b6b5 !important;
+	font-size:14px;
+}
+ion-input{
+	--placeholder-color:#b6b6b5;
+	--placeholder-opacity:1;
+	color:#b6b6b5;
+	font-size:14px;
+}
+ion-textarea{
+	--placeholder-color:#b6b6b5;
+	--placeholder-opacity:1;
+	color:#b6b6b5;
+	font-size:14px;
+}
+.barcode{
+	font-size:25px;
+	color:#FF7901 !important;
+	margin-top: 5px;
+    margin-bottom: 5px;
+	margin-inline-end:0px;
+	margin-inline-start:0px;
+}
+.divButtonClass{
+	position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: end;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.addIconData{
+	font-size:25px;
+	color:#ffffff;
+	padding-top: 2px;
+    padding-bottom: 2px;
+}
+.buttonAddImage{
+	 --border-radius: 100px !important;
+}
+/*pages*/
+.iconTextActiv{
+	font-size: 13px;
+    color: #FF7901;
+    text-align: center;
+	padding:0px 5px 5px 5px;
+    font-weight: 600;
+}
+.iconListActiv{
+	font-size: 20px;
+    color: #FF7901;
+    text-align: center;
+	padding:5px 5px 0px 5px;
+}
+.divListActiv{
+	display: inline-table;
+    border: 3px solid #FF7901;
+    border-radius: 5px;
+    margin: 0px 3px;
+}
+.iconTextNotActiv{
+	font-size: 13px;
+    color: #a6a7a8;
+    text-align: center;
+	padding:0px 5px 5px 5px;
+    font-weight: 600;
+}
+.iconListNotActiv{
+	font-size: 20px;
+    color: #a6a7a8;
+    text-align: center;
+	padding:5px 5px 0px 5px;
+}
+.divListNotActiv{
+	display: inline-table;
+    border: 3px solid #a6a7a8;
+    border-radius: 5px;
+    margin: 0px 3px;
+}

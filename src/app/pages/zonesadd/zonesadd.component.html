@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_15 padding-left_15 padding-right_15">	
+	 <form style="display: contents;" (ngSubmit)="functionAddNewZone()">
+      <div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorZoneName}}" lines="none">
+                <ion-input type="text" label="{{zone_name_placeholder}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="zoneName" (ionInput)="checkZoneName($event)"></ion-input>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorZoneName == 0">{{error_message_zone_name}}</div>
+        </div>
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" (click)="functionAddNewZone()">{{add_zone_button}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

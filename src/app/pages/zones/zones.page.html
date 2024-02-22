@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}">
+       <div *ngIf="showNotificationIcon == 1"><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+ 	<div>
+    	<div *ngIf="zonse!=0">
+            <div *ngFor="let items of returnZonseArray;let i=index" class="workordersName padding-top_5 padding-left_5 padding-right_5">	
+                <div>
+                    <ion-grid style="padding:0px">
+                        <ion-row style="padding:0px">
+                            <ion-col size="11" class="text-align_start">
+                            	<div class="workEventName padding-top_5 padding-left_5 padding-right_5">{{items.ozoneName}}</div>
+                                <div class="workordersInformation padding-top_5 padding-left_5 padding-right_5">{{inspection_points}}</div>
+                                 <div class="workordersInformation">
+                                    <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="4" class="text-align_center">
+                                            	<div class="workordersInformation padding-top_5">{{inspection_progress}}</div>
+                                                <div class="workordersInformation padding-top_5 boldFone">{{items.countOfProgress}}</div>
+                                            </ion-col>
+                                             <ion-col size="4" class="text-align_center">
+                                            <div class="workordersInformation padding-top_5">{{inspection_completed}}</div>
+                                                <div class="workordersInformation padding-top_5 boldFone">{{items.countOfCompleted}}</div>
+                                            </ion-col>
+                                             <ion-col size="4" class="text-align_center">
+                                            <div class="workordersInformation padding-top_5">{{inspection_pending}}</div>
+                                                <div class="workordersInformation padding-top_5 boldFone">{{items.countOfPending}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                                 </div>
+                            </ion-col>
+                            <ion-col size="1" class="text-align_end">
+                                <ion-icon name="ellipsis-horizontal-outline" id="popover-button_zone_{{i}}" class="menuIcon"></ion-icon>
+                                <ion-popover trigger="popover-button_zone_{{i}}" [dismissOnSelect]="true">
+                                  <ng-template>
+                                    <ion-content>
+                                      <ion-list>
+                                        <ion-item [button]="true" [detail]="false" (click)="functionInspectionPoints(items.id)">{{inspection_points}}</ion-item>
+                                        <ion-item lines="none" [button]="true" [detail]="false" (click)="functionDelectZone(ordersId,workSiteAddressId,items.id)">{{zone_delete}}</ion-item>
+                                      </ion-list>
+                                    </ion-content>
+                                  </ng-template>
+                                </ion-popover>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </div>
+        </div>
+        <div slot="fixed" class="divButtonClass">
+            <ion-button mode="ios" class="width_50_px hight_50_px" (click)="functionAddZone(ordersId,workSiteAddressId)"><ion-icon name="add" class="addIconData"></ion-icon></ion-button>
+        </div>
+         <div *ngIf="zonse==0">
+            <div class="divIconNoOrders">
+                <img src="../../assets/images/noUse.png" class="imageIcon">
+            </div>
+            <div class="errorNoDataLarge">{{error_zone_small}}</div>
+            <div class="errorNoDataSmall">{{error_zone_larg}}</div>
+        </div>
+    </div>
+</ion-content>

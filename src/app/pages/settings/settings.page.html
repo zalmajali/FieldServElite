@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}" *ngIf="showNotificationIcon == 1" (click)="functionOpenNotif()">
+       <div><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_15 padding-left_15 padding-right_15">	
+      <div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle">
+                <ion-select value="{{dateValue}}" interface="popover" (ionChange)="selectDateValue($event)" label="{{settings_date_label}}" toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option value="1">{{select_date_one}}</ion-select-option>
+                    <ion-select-option value="2">{{select_date_tow}}</ion-select-option>
+                    <ion-select-option value="3">{{select_date_three}}</ion-select-option>
+                    <ion-select-option value="4">{{select_date_fore}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle">
+                <ion-select value="{{synckValue}}" interface="popover" (ionChange)="selectsynckValue($event)" label="{{settings_synck_label}}" toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option value="5">{{date_synck_one}}</ion-select-option>
+                    <ion-select-option value="10">{{date_synck_tow}}</ion-select-option>
+                    <ion-select-option value="30">{{date_synck_three}}</ion-select-option>
+                    <ion-select-option value="60">{{date_synck_fore}}</ion-select-option>
+                    <ion-select-option value="120">{{date_synck_five}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+    </div>
+    <div class="margin_10 text-align_center">
+        <ion-grid style="padding:0px">
+            <ion-row style="padding:0px">
+                <ion-col><ion-button class="width_90_per" mode="ios" (click)="functionSaveSetting()">{{settings_done_button}}</ion-button></ion-col>
+                <ion-col><ion-button class="width_90_per" mode="ios" (click)="functionSynckSetting()">{{settings_synck_button}}</ion-button></ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+  </div>
+</ion-content>

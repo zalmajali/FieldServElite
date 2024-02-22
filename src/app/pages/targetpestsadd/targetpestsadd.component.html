@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+   <form style="display: contents;" (ngSubmit)="functionAddTrgetPest()">	
+      <div>
+        
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorTargetPestsCat}}">
+                <ion-select interface="popover" placeholder="{{select}}" value="{{category}}" label="{{target_pest_cat}}" (ionChange)="selectCat($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option value="0">{{select}}</ion-select-option>
+                    <ion-select-option *ngFor="let items of returnTargetPestsArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorTargetPestsCat == 0">{{error_add_target_cat}}</div>
+        </div>
+         <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorTargetPests}}">
+                <ion-select interface="popover" placeholder="{{select}}" value="{{targetPests}}" label="{{target_pest_pest}}" (ionChange)="selectTrgetPest($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnTargetPestsBySelectArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorTargetPests == 0">{{error_add_target_target_pest}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorTargetAmount}}" lines="none">
+            	<ion-input type="text" label="{{target_pest_amount}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="amount" (ionInput)="checkAmount($event)"></ion-input>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorAmount == 0">{{error_add_target_amount}}</div>
+        </div>
+       	<div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorTargetRanking}}">
+                <ion-select interface="popover" placeholder="{{select}}" value="{{ranking}}" label="{{target_pest_ranking}}" (ionChange)="selectRanking($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option value="0">{{select}}</ion-select-option>
+                    <ion-select-option *ngFor="let items of returnTargetRankingsArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorRanking == 0">{{error_add_target_ranking}}</div>
+        </div>
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" disabled="{{!isdisabled}}" (click)="functionAddTrgetPest()">{{target_add}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

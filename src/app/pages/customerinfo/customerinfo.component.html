@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <div  class="workordersName padding-top_5 padding-left_5 padding-right_5">	
+    	<div>
+        <ion-grid style="padding:0px">
+            <ion-row style="padding:0px">
+                <ion-col size="11" class="text-align_start">
+                    <div class="padding-left_5 padding-right_5">
+                       <div class="workEventName">{{workorders_customers_full_name}}</div>
+                       <div class="workordersInformation">{{firstName}} {{middleName}} {{lastName}}</div>
+                    </div>
+                     <div class="padding-left_5 padding-right_5">
+                       <ion-grid style="padding:0px">
+                            <ion-row style="padding:0px">
+                                <ion-col size="6" class="text-align_start">
+                                    <div class="workEventName">{{workorders_customers_businessName}}</div>
+                                    <div class="workordersInformation">{{businessName}}</div>
+                                </ion-col>
+                                <ion-col size="6" class="text-align_start">
+                                    <div class="workEventName">{{workorders_customers_extraPhone}}</div>
+                                    <div class="workordersInformation">{{extraPhone}}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid> 
+                    </div>
+                    <div>
+                        <ion-grid style="padding:0px">
+                            <ion-row style="padding:0px">
+                                <ion-col size="6" class="text-align_start">
+                                    <div class="workEventName">{{workorders_customers_extraFax}}</div>
+                                    <div class="workordersInformation">{{extraFax}}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid> 
+                    </div>
+                </ion-col>
+                <ion-col size="1" class="text-align_end">
+                    <ion-icon name="call" class="menuIcon" (click)="functionCallNumber(extraMobile)"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    	</div>
+    </div>
+</ion-content>

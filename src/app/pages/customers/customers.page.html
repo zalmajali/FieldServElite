@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}" *ngIf="showNotificationIcon == 1">
+       <div><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <div *ngFor="let items of [1,2,3,4,5,6,7,8,9];let i=index" class="customersInfo padding-top_15 padding-left_15 padding-right_15">	
+        <div>
+            <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col size="9" class="text-align_start">
+                        <div class="customersName padding-top_5 padding-left_5 padding-right_5">الاسم الكامل للزيون : #4522</div>
+                        <div class="customersInformation padding-top_5 padding-left_5 padding-right_5"><ion-icon name="location-outline" class="infoIcon"></ion-icon> all address information all address information </div>
+                        <div class="customersInformation padding-top_5 padding-left_5 padding-right_5"><ion-icon name="call-outline" class="infoIcon"></ion-icon> 962785086985</div>
+                        <div class="customersInformation padding-top_5 padding-left_5 padding-right_5"><ion-icon name="business-outline" class="infoIcon"></ion-icon> مكتب عام</div>
+                        <div class="customersInformation padding-top_5 padding-left_5 padding-right_5"><ion-icon name="document-text-outline" class="infoIcon"></ion-icon> 962785086985</div>
+                        <div class="customersInformation padding-top_5 padding-left_5 padding-right_5"><ion-icon name="document-text-outline" class="infoIcon"></ion-icon> almajali.zeyad&#64;gmail.com</div>
+                    </ion-col>
+                    <ion-col size="3" class="text-align_end">
+                    	<ion-icon name="ellipsis-horizontal-outline" id="popover-button_{{i}}" class="menuIcon"></ion-icon>
+                        <ion-popover trigger="popover-button_{{i}}" [dismissOnSelect]="true">
+                          <ng-template>
+                            <ion-content>
+                              <ion-list>
+                                <ion-item [button]="true" [detail]="false" (click)="functionCallNumber(i);">{{customers_options_one}}</ion-item>
+                                <ion-item [button]="true" [detail]="false" (click)="functionGoLocation(i);">{{customers_options_tow}}</ion-item>
+                              </ion-list>
+                            </ion-content>
+                          </ng-template>
+                        </ion-popover>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+     
+</ion-content>

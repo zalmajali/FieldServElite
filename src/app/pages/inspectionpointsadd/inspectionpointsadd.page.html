@@ -1,0 +1,115 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title *ngIf="editInformation == 0">{{pageTitle}}</ion-title>
+    <ion-title *ngIf="editInformation == 1">{{inspectionpointsEdit_title}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}" *ngIf="showNotificationIcon == 1">
+       <div><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+	<div *ngIf="inspId == 0" class="padding-top_10 padding-left_5 padding-right_5 width_100_per text-align_center">
+         <div class="divListActiv" (click)="functionInspectionPoints(zoneId)">
+            <div><ion-icon name="telescope" class="iconListActiv"></ion-icon></div>
+            <div class="iconTextActiv">{{ip_type}}</div>
+        </div>
+        <div class="divListNotActiv">
+            <div><ion-icon name="telescope" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_observation_menue}}</div>
+        </div>
+         <div class="divListNotActiv">
+            <div><ion-icon name="bug" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_target_Pest_menue}}</div>
+        </div>
+        <div class="divListNotActiv" *ngIf="branchType==3">
+            <div><ion-icon name="telescope" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_plants_menue}}</div>
+        </div>
+         <div class="divListNotActiv">
+            <div><ion-icon name="flask" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_target_material_menue}}</div>
+        </div>
+         <div class="divListNotActiv">
+            <div><ion-icon name="planet" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_target_planet_menue}}</div>
+        </div>
+    </div>    
+    <div *ngIf="inspId != 0" class="padding-top_10 padding-left_5 padding-right_5 width_100_per text-align_center">
+        <div class="divListActiv" (click)="functionInspectionPoints(zoneId)">
+            <div><ion-icon name="telescope" class="iconListActiv"></ion-icon></div>
+            <div class="iconTextActiv">{{ip_type}}</div>
+        </div>
+        <div class="divListNotActiv" (click)="functionObservation(inspId,inspctionType)">
+            <div><ion-icon name="telescope" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_observation_menue}}</div>
+        </div>
+         <div class="divListNotActiv" (click)="functionTargetpests(inspId)">
+            <div><ion-icon name="bug" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_target_Pest_menue}}</div>
+        </div>
+        <div class="divListNotActiv" *ngIf="branchType==3" (click)="functionPlants(inspId)">
+            <div><ion-icon name="telescope" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_plants_menue}}</div>
+        </div>
+         <div class="divListNotActiv" (click)="functionMaterial(inspId)">
+            <div><ion-icon name="flask" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_target_material_menue}}</div>
+        </div>
+         <div class="divListNotActiv" (click)="functionProduct(inspId)">
+            <div><ion-icon name="planet" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_target_planet_menue}}</div>
+        </div>
+    </div>        
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+      <div>
+      	<div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorInsTypeName}}">
+                <ion-select interface="popover" value="{{inspctionType}}" label="{{ip_type}}" (ionChange)="selectInsTypeValues($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option value="0">{{select}}</ion-select-option>
+                    <ion-select-option *ngFor="let items of returnInsTypeArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorInsTypeName == 0">{{error_message_InsType_name}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorBarcode}}" lines="none">
+            	<ion-input type="text" label="{{ip_barcode}}" fill="solid" mode='ios' [(ngModel)]="barcode" (ionInput)="checkBarcode($event)"></ion-input>
+            	<ion-icon slot="end" class="barcode" name="barcode-outline" (click)="functionReadeBarcode()"> </ion-icon>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorBarcode == 0">{{error_message_barcode_name}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorInsLocationName}}">
+                <ion-select interface="popover" value="{{inspctionLocations}}" label="{{ip_location}}" (ionChange)="selectInsLocationValues($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option value="0">{{select}}</ion-select-option>
+                     <ion-select-option *ngFor="let items of returnInsLocationsArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorInsLocationName == 0">{{error_message_InsLocation_name}}</div>
+        </div>
+         <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorInStatusName}}">
+                <ion-select interface="popover"  value="{{status}}" label="{{ip_status}}" (ionChange)="selectInsStatusValues($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option value="0">{{select}}</ion-select-option>
+                     <ion-select-option *ngFor="let items of returnInsStatusesArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorInsStatusName == 0">{{error_message_status_name}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorNote}}" lines="none">
+ 				<ion-textarea placeholder="{{ip_note}}" (ionInput)="checkNote($event)" mode='ios' rows='4' [(ngModel)]="note"></ion-textarea>
+ 			</ion-item>
+            <div class="errorMessage" *ngIf="isErrorNote == 0">{{error_message_note_name}}</div>
+        </div>
+    </div>
+    <div class="margin_20 text-align_center">
+        <ion-button class="width_60_per" mode="ios" (click)="functionSaveDataInspection()" disabled="{{!isdisabled}}" *ngIf="editInformation == 0">{{add_type}}</ion-button>
+        <ion-button class="width_60_per" mode="ios" (click)="functionEditDataInspection()" disabled="{{!isdisabled}}" *ngIf="editInformation == 1">{{edit_type}}</ion-button>
+        <ion-button mode="ios" (click)="functionInspectionImage()" class="buttonAddImage"><ion-icon name="image-outline" class="addIconData"></ion-icon></ion-button>
+    </div>
+  </div>
+</ion-content>

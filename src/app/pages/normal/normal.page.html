@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}" *ngIf="showNotificationIcon == 1">
+       <div><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="padding-top_15 padding-left_15 padding-right_15">	
+  	test show string data test show string data test show string data test show string data test show string data test show string data test show string data test show string data test show string data test show string data test show string data test show string data test show string data test show string data test show string data test show string data 
+  </div>
+  <div class="padding-top_15 padding-left_15 padding-right_15">	
+  	عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية عرض البيانات النصية 
+  </div>
+   <div class="padding-top_15 padding-left_15 padding-right_15">	
+	 <form style="display: contents;"><!------(ngSubmit)="checkUser()"--->
+      <div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle" lines="none"><!------{{errorEmailUserName}}--->
+                <ion-input type="text" label="Target pest Ranking" fill="solid" mode='ios'></ion-input><!------[ngModelOptions]="{standalone: true}" [(ngModel)]="emailUserName" placeholder="{{email_user_name_placeholder}}" (ionInput)="checkEmailUserName($event)"--->
+            </ion-item>
+            <!------<div class="errorMessage" *ngIf="isErrorEmailUserName == 0">{{error_message_email_user_name}}</div>--->
+        </div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle"><!------{{errorEmailUserName}}--->
+                <ion-select value="1" interface="popover" label="Target pest Ranking dfff" toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios"><!--(ionChange)="selectCatValues($event)" " placeholder="{{select_date_placeholder}}"-->
+                    <ion-select-option value="0">select</ion-select-option>
+                    <ion-select-option value="1">asdasd</ion-select-option>
+                    <ion-select-option value="2">asdasdads</ion-select-option>
+                    <ion-select-option value="3">asdasdasd</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <!------<div class="errorMessage" *ngIf="isErrorEmailUserName == 0">{{error_message_email_user_name}}</div>--->
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle" lines="none"><!------{{errorEmailUserName}}--->
+ 				<ion-textarea  placeholder="Enter text" mode='ios' rows='4'></ion-textarea>   <!--label="{{label_select_date}}" placeholder="{{select_date_placeholder}}"-->          
+ 			</ion-item>
+            <!------<div class="errorMessage" *ngIf="isErrorEmailUserName == 0">{{error_message_email_user_name}}</div>--->
+        </div>
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios">button</ion-button><!--(click)="checkUser()"-->
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

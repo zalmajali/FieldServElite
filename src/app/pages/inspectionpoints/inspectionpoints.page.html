@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}">
+       <div *ngIf="showNotificationIcon == 1"><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+	<div>
+    	<div *ngIf="inPoints!=0">
+            <div *ngFor="let items of returnIPArray;let i=index" class="workordersName padding-top_5 padding-left_5 padding-right_5">	
+               <div>
+                    <ion-grid style="padding:0px">
+                        <ion-row style="padding:0px">
+                            <ion-col size="11" class="text-align_start">
+                                <div class="padding-left_5 padding-right_5">
+                                	<div class="workEventName">{{ip_type}}</div>
+                                    <div class="workordersInformation">{{items.inspntTypeName}}</div>
+                                </div>
+                                <div>
+                                    <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{ip_zone}}</div>
+                                                <div class="workordersInformation">{{items.siteAddressZoneName}}</div>
+                                            </ion-col>
+                                            <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{ip_event}}</div>
+                                                <div class="workordersInformation padding-left_5 padding-right_5">{{items.wororderEventName}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid> 
+                                </div>
+                                <div>
+                                    <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="6" class="text-align_start" *ngIf='items.typeCode == 1'>
+                                                <div class="workEventName">{{ip_barcode}}</div>
+                                                <div class="workordersInformation">{{items.barcode}}</div>
+                                            </ion-col>
+                                              <ion-col size="6" class="text-align_start" *ngIf='items.typeCode == 2'>
+                                                <div class="workEventName">{{ip_qrCode}}</div>
+                                                <div class="workordersInformation">{{items.qrCode}}</div>
+                                            </ion-col>
+                                            <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{ip_status}}</div>
+                                                <div class="workordersInformation padding-left_5 padding-right_5">{{items.inspntStatusName}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid> 
+                                </div>
+                                <div>
+                                    <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{ip_location}}</div>
+                                                <div class="workordersInformation">{{items.locationName}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid> 
+                                </div>
+                            </ion-col>
+                            <ion-col size="1" class="text-align_end">
+                             	<ion-icon name="ellipsis-horizontal-outline" id="popover-button_{{i}}" class="menuIcon"></ion-icon>
+                                <ion-popover trigger="popover-button_{{i}}" [dismissOnSelect]="true">
+                                  <ng-template>
+                                    <ion-content>
+                                      <ion-list>
+                                        <ion-item [button]="true" [detail]="false" (click)="functionInspectionPointsEdit(items.IPId);">{{inspectionpoints_options_tow}}</ion-item>
+                                        <ion-item [button]="true" lines="none"  [detail]="false" (click)="functionInspectionPointsDelete(items.IPId);">{{inspectionpoints_options_three}}</ion-item>
+                                      </ion-list>
+                                    </ion-content>
+                                  </ng-template>
+                                </ion-popover>
+                                <div *ngIf='items.image != 0' (click)="functionShowData(items.image,2)"><ion-icon name="image-outline" class="menuIcon"></ion-icon></div>
+                                <div *ngIf='items.note != 0' (click)="functionShowData(items.note,1)"><ion-icon name="information-circle-outline" class="menuIcon"></ion-icon></div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+                <div (click)="functionAddGoLocation(items.IPId)" class="text-align_end"><ion-icon name="location" class="menuIcon"></ion-icon></div>
+            </div>
+        </div>
+        <div slot="fixed" class="divButtonClass">
+            <ion-button mode="ios"  class="width_50_px hight_50_px" (click)="functionInspectionPointsAdd()"><ion-icon name="add" class="addIconData"></ion-icon></ion-button>
+        </div>
+         <div *ngIf="inPoints==0">
+            <div class="divIconNoOrders">
+                <img src="../../assets/images/noUse.png" class="imageIcon">
+            </div>
+            <div class="errorNoDataLarge">{{error_inspection_small}}</div>
+            <div class="errorNoDataSmall">{{error_inspection_larg}}</div>
+        </div>
+    </div>
+</ion-content>

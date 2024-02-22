@@ -1,0 +1,137 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}">
+       <div *ngIf="showNotificationIcon == 1"><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+	 <div class="padding-top_10 padding-left_5 padding-right_5 width_100_per text-align_center">
+        <div class="divListNotActiv" (click)="functionInspectionPoints(zoneId)">
+            <div><ion-icon name="telescope" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_type}}</div>
+        </div>
+        <div class="divListActiv">
+            <div><ion-icon name="telescope" class="iconListActiv"></ion-icon></div>
+            <div class="iconTextActiv">{{ip_observation_menue}}</div>
+        </div>
+         <div class="divListNotActiv" (click)="functionTargetpests(inspId)">
+            <div><ion-icon name="bug" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_target_Pest_menue}}</div>
+        </div>
+         <div class="divListNotActiv" *ngIf="branchType==3" (click)="functionPlants(inspId)">
+            <div><ion-icon name="telescope" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_plants_menue}}</div>
+        </div>
+         <div class="divListNotActiv" (click)="functionMaterial(inspId)">
+            <div><ion-icon name="flask" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_target_material_menue}}</div>
+        </div>
+         <div class="divListNotActiv" (click)="functionProduct(inspId)">
+            <div><ion-icon name="planet" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_target_planet_menue}}</div>
+        </div>
+    </div> 
+	<div>
+    	<div *ngIf="observation!=0">
+            <div *ngFor="let items of returnObservationsArray;let i=index" class="workordersName padding-top_5 padding-left_5 padding-right_5">	
+               <div>
+                    <ion-grid style="padding:0px">
+                        <ion-row style="padding:0px">
+                            <ion-col size="11" class="text-align_start">
+                                <div class="padding-left_5 padding-right_5">
+                                   <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{observation_name}}</div>
+                                                <div class="workordersInformation">{{items.observationName}}</div>
+                                            </ion-col>
+                                              <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{observation_ranking}}</div>
+                                                <div class="workordersInformation">{{items.rankingName}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid> 
+                                </div>
+                                 <div class="padding-left_5 padding-right_5">
+                                   <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="6" class="text-align_start" *ngIf='items.locations!=0'>
+                                                <div class="workEventName">{{observation_locations}}</div>
+                                                <div class="workordersInformation">{{items.locations}}</div>
+                                            </ion-col>
+                                            <ion-col size="6" class="text-align_start" *ngIf='items.locations==0'>
+                                                <div class="workEventName">{{observation_locations}}</div>
+                                                <div class="workordersInformation">{{items.customLocationName}}</div>
+                                            </ion-col>
+                                              <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{observation_target_pests}}</div>
+                                                <div class="workordersInformation">{{items.targetPests}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid> 
+                                </div>
+                                <div>
+                                    <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{observation_responsibility}}</div>
+                                                <div class="workordersInformation">{{items.responsibility}}</div>
+                                            </ion-col>
+                                              <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{observation_recommendation_name}}</div>
+                                                <div class="workordersInformation">{{items.recommendationName}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid> 
+                                </div>
+                            </ion-col>
+                            <ion-col size="1" class="text-align_end">
+                             	<ion-icon name="ellipsis-horizontal-outline" id="popover_ob-button_{{i}}" class="menuIcon"></ion-icon>
+                                <ion-popover trigger="popover_ob-button_{{i}}" [dismissOnSelect]="true">
+                                  <ng-template>
+                                    <ion-content>
+                                      <ion-list>
+                                        <ion-item [button]="true" [detail]="false" (click)="functionObservationEdit(items.obId);">{{observation_options_One}}</ion-item>
+                                        <ion-item [button]="true" lines="none"  [detail]="false" (click)="functionObservationDelete(items.obId);">{{observation_options_tow}}</ion-item>
+                                      </ion-list>
+                                    </ion-content>
+                                  </ng-template>
+                                </ion-popover>
+                                <ion-icon name="images" *ngIf='imagesValues!=0' class="menuIcon" (click)="functionShowData(items.images)"></ion-icon>
+                                <ion-icon name="camera" class="menuIcon" (click)="functionInspectionImage(items.obId)"></ion-icon>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </div>
+        </div>
+        <div slot="fixed" class="divButtonClass">
+              <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col size="6" class="text-align_start">
+                        <div>
+            				<ion-button class="width_50_px hight_50_px" mode="ios" (click)="functionEndInspectionPoint(inspId)"><ion-icon name="checkmark-done-outline" class="addIconData"></ion-icon></ion-button>
+                        </div>
+                    </ion-col>
+                      <ion-col size="6" class="text-align_end">
+                       <div>
+           					 <ion-button class="width_50_px hight_50_px" mode="ios" (click)="functionObservationAdd(inspId,inspctionType)"><ion-icon name="add" class="addIconData"></ion-icon></ion-button>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+        </div>
+         <div *ngIf="observation==0">
+            <div class="divIconNoOrders">
+                <img src="../../assets/images/noUse.png" class="imageIcon">
+            </div>
+            <div class="errorNoDataLarge">{{error_observation_small}}</div>
+            <div class="errorNoDataSmall">{{error_observation_larg}}</div>
+        </div>
+    </div>
+</ion-content>

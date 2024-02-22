@@ -1,0 +1,110 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+   <form style="display: contents;" (ngSubmit)="functionAddNewMaterials()">	
+      <div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorMaterialsName}}">
+                <ion-select interface="popover" placeholder="{{select}}" value="{{materialsName}}" label="{{materials_name}}" (ionChange)="selectMaterialName($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnMaterialsArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorMaterialsName == 0">{{materials_name_add}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorUsageUnit}}" lines="none">
+            	<ion-input type="text" disabled="true" label="{{materials_usage_unit}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="usageUnit"></ion-input>
+            </ion-item>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorMaterialsQuantity}}" lines="none">
+            	<ion-input type="text" label="{{materials_quantity}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="materialsQuantity" (ionInput)="checkQuantityName($event)"></ion-input>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorMaterialsQuantity == 0">{{materials_quantity_add}}</div>
+        </div>
+        <div class="margin_10" *ngIf='returnActiveIngredientsArray.length!=0'>
+        	<div class="workEventName">{{materials_target_pests_quantity}}</div>
+            <div *ngFor="let itemsDA of returnActiveIngredientsArray;let i = index">
+                <ion-item class="ionItemStyleNoColor activeAg" [ngStyle]="{'direction': dirTow}" lines="none">
+                    <ion-checkbox justify="end" mode='ios' value="{{itemsDA.id}}" (ionChange)="functionSelectActiveIngredients($event)"><span>{{itemsDA.name}}</span><span style="padding-left:10px;padding-right:10px">{{itemsDA.activePercent}}</span></ion-checkbox><!--checked='{{items.check}}'-->
+                </ion-item>
+                <div></div>
+        	</div>
+        </div>
+         <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorEquipmentName}}">
+                <ion-select interface="popover"  value="{{equipmentName}}" placeholder="{{select}}" label="{{materials_equipment_name}}" (ionChange)="selectEquipmentName($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                     <ion-select-option *ngFor="let itemsEqui of returnMatEquipmentsArray" value="{{itemsEqui.id}}">{{itemsEqui.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorEquipmentName == 0">{{materials_equipment_name_add}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorAppMethod}}">
+                <ion-select interface="popover"  value="{{appMethod}}" placeholder="{{select}}" label="{{materials_app_method}}" (ionChange)="selectAppMethod($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                     <ion-select-option *ngFor="let itemsApp of returnMatMethodsArray" value="{{itemsApp.id}}">{{itemsApp.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorAppMethod == 0">{{materials_app_method_add}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorLocations}}">
+                <ion-select interface="popover" multiple="true" [value]="locations" label="{{materials_locations}}" placeholder="{{select}}" (ionChange)="selectLocationName($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                     <ion-select-option *ngFor="let itemsLo of returnMatLocationsArray" value="{{itemsLo.id}}">{{itemsLo.name}}</ion-select-option>
+                     <ion-select-option value="0">{{materials_custom_location}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorLocations}}" lines="none">
+            	<ion-input type="text" disabled="{{customLocationsDis}}" label="{{materials_custom_location}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="customLocations" (ionInput)="checkCustomLocations($event)"></ion-input>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorLocations == 0">{{materials_locations_add}}</div>
+        </div>
+         <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorTargetPsts}}" >
+                <ion-select interface="popover" multiple="true" [value]="targetPests" placeholder="{{select}}" label="{{materials_target_ests}}" (ionChange)="selectTargetPests($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                     <ion-select-option *ngFor="let itemsTar of returnMatTargetPestsArray;let i=index" value="{{itemsTar.id}}">{{itemsTar.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorTargetPsts == 0">{{materials_target_ests_add}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col *ngFor="let itemsTarQ of targetPests;let i = index" class="text-align_start" size="6" style="padding-left:7px;padding-right:7px;">
+                    	<ion-label class="labelTargetData">{{materials_quantity}}</ion-label>
+                       	<ion-item class="ionItemStyle" lines="none">
+                            <ion-input type="text"  mode='ios' value="{{targetPestsQuantity[i][1]}}" [ngModelOptions]="{standalone: true}"  (ionInput)="checkValOfTarQ($event,i)"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>        
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorAppRate}}" lines="none">
+            	<ion-input type="text" label="{{materials_app_Rate}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="appRate" (ionInput)="checkAppRate($event)"></ion-input>
+        	</ion-item>
+        	<div class="errorMessage" *ngIf="isErrorAppRate == 0">{{materials_app_Rate_add}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorNote}}" lines="none">
+            	<ion-textarea placeholder="{{materials_note}}" [ngModelOptions]="{standalone: true}" (ionInput)="checkNote($event)" mode='ios' rows='4' [(ngModel)]="note"></ion-textarea>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorNote == 0">{{materials_note_add}}</div>
+        </div>
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" disabled="{{!isdisabled}}" (click)="functionAddNewMaterials()">{{materials_add}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

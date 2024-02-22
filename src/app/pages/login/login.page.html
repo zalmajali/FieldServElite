@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}">
+       <div><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+<div class="backLogin padding-top_15 padding-bottom_15">	
+	<div class="margin_20">
+    	<img src="../../assets/images/FieldServe-Elite-Logo.png" class="imageLogo">
+    </div>
+    <form style="display: contents;" (ngSubmit)="checkUser()"><!------(ngSubmit)="checkUser()"--->
+    <div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorEmailUserName}}" lines="none">
+                <ion-icon slot="start" class="iconAt" name="at-circle"></ion-icon>
+                <ion-input type="text" [(ngModel)]="emailUserName" [ngModelOptions]="{standalone: true}" placeholder="{{email_user_name_placeholder}}" (ionInput)="checkEmailUserName($event)"></ion-input>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorEmailUserName == 0">{{error_message_email_user_name}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorUserPassword}}" lines="none">
+                <ion-icon slot="start" class="iconAt" name="lock-closed"></ion-icon>
+                <ion-input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="userPassword" [ngModelOptions]="{standalone: true}"  placeholder="{{user_password_placeholder}}" (ionInput)="checkPassword($event)"></ion-input>
+                <ion-icon slot="end" class="iconPass" [name]="showPassword ? 'eye' : 'eye-off'" (click)="changeInputType()"> </ion-icon>
+            </ion-item>
+        	<div class="errorMessage" *ngIf="isErrorUserPassword == 0">{{user_password_error}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle">
+                <ion-select value="1" interface="popover" (ionChange)="selectSyncData($event)" label="{{label_select_date}}" label-placement="fixed" fill="solid" placeholder="{{select_date_placeholder}}" toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option value="1">{{select_date_one}}</ion-select-option>
+                    <ion-select-option value="2">{{select_date_tow}}</ion-select-option>
+                    <ion-select-option value="3">{{select_date_three}}</ion-select-option>
+                    <ion-select-option value="4">{{select_date_fore}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+    </div>
+    <div class="margin_10 forgetPassword" (click)="forgotPassword()">{{forgot_password}}</div>
+    <div class="margin_20">
+    	<ion-button class="width_60_per" mode="ios" (click)="checkUser()">{{login_button}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+    </form>
+</div>
+</ion-content>

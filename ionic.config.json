@@ -1,0 +1,7 @@
+{
+  "name": "FieldServ_Elitenew",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

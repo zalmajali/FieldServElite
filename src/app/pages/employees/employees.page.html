@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}" *ngIf="showNotificationIcon == 1">
+       <div><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_15 padding-left_5 padding-right_5">	
+      <div *ngIf="employees!=0">
+         <div class="padding-top_1 padding-bottom_1" *ngFor="let items of returnEmployeesArray;let i = index">
+            <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col class="text-align_start" style="padding:0px">
+                        <ion-item class="ionItemStyleNoColor employeeName" [ngStyle]="{'direction': dirTow}" lines="none">
+                            <ion-checkbox justify="end" mode='ios' value="{{items.id}}" checked='{{items.check}}' (ionChange)="functionSelectEmployee($event)">{{items.fullName}}</ion-checkbox>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col class="text-align_end" style="padding:0px">
+                        <div class="padding-top_14" *ngIf="items.mobile!=0">
+                            <ion-icon name="call" class="callIcon" (click)="functionCallNumber(items.mobile)"></ion-icon>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <div class="buttonToTop text-align_center" *ngIf="inDayes==1 && checkRoute == 1">
+            <ion-button class="width_60_per" mode="ios" (click)="functionSaveInformation()">{{employees_button}}</ion-button><!--(click)="checkUser()"-->
+        </div>  
+    </div>
+    <div *ngIf="employees==0">
+    	<div class="divIconNoemployee">
+        	<img src="../../assets/images/noEmployee.png" class="imageIcon">
+        </div>
+        <div class="errorNoDataLarge">{{error_no_data_large}}</div>
+        <div class="errorNoDataSmall">{{error_no_data_small}}</div>
+    </div>
+  </div>
+</ion-content>

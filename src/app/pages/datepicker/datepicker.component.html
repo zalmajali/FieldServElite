@@ -1,0 +1,7 @@
+<ion-content>
+    <div class="largBox">
+        <div class="smallBox">
+            <ion-datetime  [showDefaultButtons]="true" doneText="{{ok}}" cancelText="{{cancel}}" mode='md' (ionCancel)="functionClosePage()" (ionChange)="selectDate($event)"></ion-datetime>
+        </div>
+    </div>
+</ion-content>

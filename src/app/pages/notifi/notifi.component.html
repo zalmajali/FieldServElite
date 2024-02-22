@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+   <form style="display: contents;" (ngSubmit)="functionAddNotifiTask()">	
+      <div>
+         <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle">
+                <ion-select interface="popover" placeholder="{{select}}" label="{{notifi}}" (ionChange)="selectNotifi($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option value="1">{{notifi_one}}</ion-select-option>
+                    <ion-select-option value="2">{{notifi_tow}}</ion-select-option>
+                    <ion-select-option value="3">{{notifi_three}}</ion-select-option>
+                    <ion-select-option value="4">{{notifi_for}}</ion-select-option>
+                    <ion-select-option value="5">{{notifi_five}}</ion-select-option>
+                    <ion-select-option value="6">{{notifi_six}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div> 
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" (click)="functionAddNotifiTask()">{{save}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

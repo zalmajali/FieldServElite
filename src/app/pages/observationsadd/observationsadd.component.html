@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+   <form style="display: contents;" (ngSubmit)="functionAddNewObservation()">	
+      <div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorObservationName}}">
+                <ion-select interface="popover" placeholder="{{select}}" value="{{observationName}}" label="{{observation_form}}" (ionChange)="selectObservationName($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnObservationsArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                    <ion-select-option value="0">{{observation_custom_form}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorObservationName}}" lines="none">
+            	<ion-input type="text" disabled="{{observationCustomDis}}" label="{{observation_custom_form}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="observationCustom" (ionInput)="customObservationName($event)"></ion-input>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorObservationName == 0">{{observation_form_select}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorRecommendationName}}">
+                <ion-select interface="popover" placeholder="{{select}}" disabled="{{recommendationDis}}" value="{{recommendationName}}" label="{{observation_recommendation_form}}" (ionChange)="selectRecommendationName($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                     <ion-select-option *ngFor="let items of returnRecommendationsArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                     <ion-select-option value="0">{{observation_custom_recommendation_form}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorRecommendationName}}" lines="none">
+            	<ion-input type="text" disabled="{{recommendationCustomDis}}" label="{{observation_custom_recommendation_form}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="customRecommendation" (ionInput)="checkCustomRecommendation($event)"></ion-input>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorRecommendationName == 0">{{observation_recommendation_form_select}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorLocationName}}">
+                <ion-select interface="popover" multiple="true" disabled="{{locationsDis}}" [value]="locations" label="{{observation_locations}}" placeholder="{{select}}" (ionChange)="selectLocationName($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                     <ion-select-option *ngFor="let items of returnObLocationsArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                     <ion-select-option value="0">{{observation_custom_locations}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorLocationName}}" lines="none">
+            	<ion-input type="text" disabled="{{customLocationsDis}}" label="{{observation_custom_locations}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="customLocations" (ionInput)="checkCustomLocations($event)"></ion-input>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorLocationName == 0">{{observation_custom_locations_select}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorRanking}}">
+                <ion-select interface="popover"  value="{{ranking}}" placeholder="{{select}}" label="{{observation_custom_ranking}}" (ionChange)="selectRanking($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                     <ion-select-option *ngFor="let items of returnObRankingsArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorRanking == 0">{{observation_custom_ranking_select}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorTargetPests}}" >
+                <ion-select interface="popover" multiple="true" [value]="targetPests" placeholder="{{select}}" label="{{observation_target_pests_form}}" (ionChange)="selectTargetPests($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                     <ion-select-option *ngFor="let items of returnTargetPestsArray;let i=index" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorTargetPests == 0">{{observation_custom_pests_form_select}}</div>
+        </div>
+
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle" style="border:1px solid green !important">
+                <ion-select interface="popover" value="{{responsibility}}" label="{{observation_responsibility}}" (ionChange)="selectresponsibility($event)" toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                        <ion-select-option value="1">{{observation_responsibility_one}}</ion-select-option>
+                        <ion-select-option value="2">{{observation_responsibility_tow}}</ion-select-option>
+                        <ion-select-option value="3">{{observation_responsibility_three}}</ion-select-option>
+                        <ion-select-option value="4">{{observation_responsibility_fore}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" disabled="{{!isdisabled}}" (click)="functionAddNewObservation()">{{observation_add}}</ion-button>
+        <ion-button mode="ios" (click)="functionInspectionImage()" class="buttonAddImage"><ion-icon name="image-outline" class="addIconData"></ion-icon></ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

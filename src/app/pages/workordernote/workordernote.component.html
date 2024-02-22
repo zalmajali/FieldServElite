@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+   <form style="display: contents;" (ngSubmit)="functionAddNoteTask()">	
+      <div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorNote}}" lines="none">
+ 				<ion-textarea placeholder="{{private_note}}" [ngModelOptions]="{standalone: true}" (ionInput)="checkNote($event)" mode='ios' rows='4' [(ngModel)]="privateNote"></ion-textarea>
+ 			</ion-item>
+            <div class="errorMessage" *ngIf="isErrorNote == 0">{{private_note_add}}</div>
+        </div>   
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" (click)="functionAddNoteTask()">{{private_add}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

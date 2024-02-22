@@ -1,0 +1,103 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}">
+       <div *ngIf="showNotificationIcon == 1"><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <div *ngIf="checkRoute == 0 && checkRoute != 2">
+    	<div *ngIf="workorders!=0">
+            <div *ngFor="let items of returnWorkordersArray;let i=index" class="workordersName padding-top_15 padding-left_15 padding-right_15">	
+                <div>
+                    <ion-grid style="padding:0px">
+                        <ion-row style="padding:0px">
+                            <ion-col size="11" class="text-align_start">
+                                <div class="workEventName padding-left_5 padding-right_5"><span>{{items.ordersId}}|</span> {{items.eventName}}</div>
+                                <div class="workordersInformation padding-top_3 padding-left_5 padding-right_5" *ngIf="items.firstName !== null">{{items.firstName}} {{items.middleName}} {{items.lastName}}</div>
+                                <div class="workordersInformation padding-top_3" *ngIf="items.streetName !== null"><ion-icon name="location" class="infoIcon"></ion-icon>{{items.streetNo}}, {{items.streetName}}, {{items.addressLineOne}}</div>
+                                <div class="workordersInformation padding-top_3 time" *ngIf="items.scheduledTimeType == 1 && items.specificTime !== null">
+                                	<ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="6" class="text-align_start">
+                                            	<div><ion-icon name="time" class="infoIcon" style="vertical-align:text-bottom;font-size:18px"></ion-icon> {{items.specificTime}}</div>
+                                            </ion-col>
+                                            <ion-col size="6" class="text-align_end">
+                                            	<div class="durationTime">{{items.scheduleDuration}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                                </div>
+                                <div class="workordersInformation padding-top_3 time" *ngIf="items.scheduledTimeType == 2 && items.rangeStartTime!==null && items.rangeEndTime!==null">
+                                    <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="4" class="text-align_start">
+                                            	<ion-icon name="time" class="infoIcon" style="vertical-align:text-bottom;font-size:18px"></ion-icon> {{items.rangeStartTime}}
+                                            </ion-col>
+                                            <ion-col size="4" class="text-align_end">
+                                            	<ion-icon name="time" class="infoIcon" style="vertical-align:text-bottom;font-size:18px"></ion-icon> {{items.scheduleDuration}}
+                                            </ion-col>
+                                              <ion-col size="4" class="text-align_end">
+                                            	<ion-icon name="time" class="infoIcon" style="vertical-align:text-bottom;font-size:18px"></ion-icon> {{items.rangeEndTime}}
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                                </div>
+                            </ion-col>
+                            <ion-col size="1" class="text-align_end">
+                                <ion-icon name="ellipsis-horizontal-outline" id="popover-button_{{i}}" class="menuIcon"></ion-icon>
+                                <ion-popover trigger="popover-button_{{i}}" [dismissOnSelect]="true">
+                                  <ng-template>
+                                    <ion-content>
+                                      <ion-list>
+                                        <ion-item [button]="true" [detail]="false" (click)="functionCustomerInformation(items.firstName,items.middleName,items.lastName,items.businessName,items.extraPhone,items.extraMobile,items.extraFax)">{{workorders_options_one}}</ion-item>
+                                        <!--<ion-item [button]="true" [detail]="false" (click)="functionGoLocation(i);">{{workorders_options_tow}}</ion-item>-->
+                                        <ion-item [button]="true" id="popover-button_Data">{{complete_tasks}}</ion-item>
+                                          <ion-popover trigger="popover-button_Data" side="{{floatD}}" [dismissOnSelect]="true">
+                                          <ng-template>
+                                            <ion-content>
+                                              <ion-list>
+                                                <ion-item [button]="true" [detail]="false" (click)="functionCompleteTasks(items.eventId,items.ordersId,items.workSiteAddressId,items.barcodeRequired,2)">{{tasks_status_one}}</ion-item>
+                                                <ion-item [button]="true" [detail]="false" (click)="functionCompleteTasks(items.eventId,items.ordersId,items.workSiteAddressId,items.barcodeRequired,3)">{{tasks_status_tow}}</ion-item>
+                                                <ion-item [button]="true" [detail]="false" (click)="functionCompleteTasks(items.eventId,items.ordersId,items.workSiteAddressId,items.barcodeRequired,4)">{{tasks_status_three}}</ion-item>
+                                                <ion-item [button]="true" [detail]="false" (click)="functionCompleteTasks(items.eventId,items.ordersId,items.workSiteAddressId,items.barcodeRequired,5)">{{tasks_status_for}}</ion-item>
+                                                <ion-item [button]="true" [detail]="false" (click)="functionCompleteTasks(items.eventId,items.ordersId,items.workSiteAddressId,items.barcodeRequired,6)">{{tasks_status_five}}</ion-item> <!--*ngIf="branchType!=3"-->
+                                              </ion-list>
+                                            </ion-content>
+                                          </ng-template>
+                                        </ion-popover>
+                                        <ion-item [button]="true" [detail]="false" (click)="functionStartWorkorder(items.eventName,items.eventId,items.ordersId,items.workSiteAddressId,items.eventEventId);">{{workorders_options_three}}</ion-item>
+                                        <ion-item [button]="true" [detail]="false" (click)="functionAccountNotes(items.eventId,items.ordersId)">{{workorders_options_fore}}</ion-item>
+                                        <ion-item [button]="true" [detail]="false" (click)="functionInstructions(items.eventId,items.ordersId);">{{workorders_options_nine}}</ion-item>
+                                        <ion-item [button]="true" [detail]="false" (click)="functionGoLocation(items.siteAddGeolocation);">{{workorders_options_five}}</ion-item>
+                                      	<ion-item [button]="true" [detail]="false" (click)="functionFollowupWorkorder(items.eventId,items.ordersId);">{{workorder_followup}}</ion-item> 
+                                        <ion-item [button]="true" [detail]="false" (click)="functionLocatioInformation(items.eventId,items.ordersId,items.workSiteAddressId)">{{workorders_options_seven}}</ion-item>                                      </ion-list>
+                                    </ion-content>
+                                  </ng-template>
+                                </ion-popover>
+                                <div (click)="functionTaskImage(items.workSiteAddressId)"><ion-icon name="camera" class="menuIcon"></ion-icon></div>
+                                <div (click)="functionReadeBarcode(items.workSiteAddressId)"><ion-icon name="barcode-outline" class="menuIcon"></ion-icon></div>
+                              	<div (click)="functionPropertyNumber(items.eventId,items.ordersId,items.workSiteAddressId)"><ion-icon name="code-working-outline" class="menuIcon"></ion-icon></div>
+                                <div (click)="functionWorkordernote(items.eventId,items.ordersId,items.workSiteAddressId)"><ion-icon name="alert-circle-outline" class="menuIcon"></ion-icon></div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </div>
+        </div>
+        <div slot="fixed" class="divButtonClass text-align_start" *ngIf="showLunchButton == 1">
+         	<ion-button mode="ios" (click)="functionStartLunch(routeId,routeLogId)"><ion-icon name="fast-food" class="addIconData"></ion-icon></ion-button>
+        </div>
+         <div *ngIf="workorders==0">
+            <div class="divIconNoOrders">
+                <img src="../../assets/images/noUse.png" class="imageIcon">
+            </div>
+            <div class="errorNoDataLarge">{{error_no_inprogress_orders_large}}</div>
+            <div class="errorNoDataSmall">{{error_no_inprogress_orders_small}}</div>
+        </div>
+    </div>
+</ion-content>

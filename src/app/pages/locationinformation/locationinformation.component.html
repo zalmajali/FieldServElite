@@ -1,0 +1,112 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <div  class="workordersName padding-top_5 padding-left_5 padding-right_5">	
+    	<div class="padding-left_5 padding-right_5">
+           <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col size="6" class="text-align_start">
+                        <div class="workEventName">{{governorate_name}}</div>
+                        <div class="workordersInformation">{{governorateName}}</div>
+                    </ion-col>
+                    <ion-col size="6" class="text-align_start">
+                        <div class="workEventName">{{city_name}}</div>
+                        <div class="workordersInformation">{{cityName}}</div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+        </div>
+        <div class="padding-left_5 padding-right_5">
+           <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col size="6" class="text-align_start">
+                        <div class="workEventName">{{district_name}}</div>
+                        <div class="workordersInformation">{{districtName}}</div>
+                    </ion-col>
+                    <ion-col size="6" class="text-align_start">
+                        <div class="workEventName">{{neighborhood_name}}</div>
+                        <div class="workordersInformation">{{neighborhoodName}}</div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+        </div>
+        <div class="padding-left_5 padding-right_5">
+           <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col size="6" class="text-align_start">
+                        <div class="workEventName">{{street_no}}</div>
+                        <div class="workordersInformation">{{streetNo}}</div>
+                    </ion-col>
+                    <ion-col size="6" class="text-align_start">
+                        <div class="workEventName">{{street_name}}</div>
+                        <div class="workordersInformation">{{streetName}}</div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+        </div>
+        <div class="padding-left_5 padding-right_5">
+           <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col size="12" class="text-align_start">
+                        <div class="workEventName">{{address}}</div>
+                        <div class="workordersInformation">{{addressLine1}} {{addressLine2}}</div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+        </div>
+        <div class="padding-left_5 padding-right_5">
+           <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col size="6" class="text-align_start">
+                        <div class="workEventName">{{property_name}}</div>
+                        <div class="workordersInformation">{{propertyName}}</div>
+                    </ion-col>
+                    <ion-col size="6" class="text-align_start">
+                        <div class="workEventName">{{zone_number}}</div>
+                        <div class="workordersInformation">{{countZones}}</div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+        </div>
+        <div class="padding-left_5 padding-right_5">
+           <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col size="6" class="text-align_start">
+                        <div class="workEventName">{{property_number}}</div>
+                        <div class="workordersInformation">{{propertyNumber}}</div>
+                    </ion-col>
+                    <ion-col size="6" class="text-align_start">
+                        <div class="workEventName">{{barcode_data}}</div>
+                        <div class="workordersInformation">{{barcode}}</div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+        </div>
+          <div class="padding-left_5 padding-right_5">
+           <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col size="12" class="text-align_start">
+                        <div class="workEventName">{{private_note}}</div>
+                        <div class="workordersInformation">{{privateNote}}</div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+        </div>
+        <div class="padding-left_5 padding-right_5" *ngIf="image!=0">
+           <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col size="12" class="text-align_start">
+                        <div class="workEventName">{{image_data}}</div>
+                        <div class="workordersInformation"><img src="{{image}}"></div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+        </div>
+    </div>
+</ion-content>

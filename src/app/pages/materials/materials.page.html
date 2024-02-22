@@ -1,0 +1,149 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}">
+       <div *ngIf="showNotificationIcon == 1"><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+	 <div class="padding-top_10 padding-left_5 padding-right_5 width_100_per text-align_center">
+        <div class="divListNotActiv" (click)="functionInspectionPoints(zoneId)">
+            <div><ion-icon name="telescope" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_type}}</div>
+        </div>
+        <div class="divListNotActiv" (click)="functionObservation(inspId,inspctionType)">
+            <div><ion-icon name="telescope" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_observation_menue}}</div>
+        </div>
+         <div class="divListNotActiv" (click)="functionTargetpests(inspId)">
+            <div><ion-icon name="bug" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_target_Pest_menue}}</div>
+        </div>
+         <div class="divListNotActiv" *ngIf="branchType==3" (click)="functionPlants(inspId)">
+            <div><ion-icon name="telescope" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_plants_menue}}</div>
+        </div>
+         <div class="divListActiv">
+            <div><ion-icon name="flask" class="iconListActiv"></ion-icon></div>
+            <div class="iconTextActiv">{{ip_target_material_menue}}</div>
+        </div>
+         <div class="divListNotActiv" (click)="functionProduct(inspId)">
+            <div><ion-icon name="planet" class="iconListNotActiv"></ion-icon></div>
+            <div class="iconTextNotActiv">{{ip_target_planet_menue}}</div>
+        </div>
+    </div> 
+	<div>
+    	<div *ngIf="materials!=0">
+            <div *ngFor="let items of returnMaterialsArray;let i=index" class="workordersName padding-top_5 padding-left_5 padding-right_5">	
+               <div>
+                    <ion-grid style="padding:0px">
+                        <ion-row style="padding:0px">
+                            <ion-col size="11" class="text-align_start">
+                                <div class="padding-left_5 padding-right_5">
+                                   <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{materials_name}}</div>
+                                                <div class="workordersInformation">{{items.itemName}}</div>
+                                            </ion-col>
+                                              <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{materials_usage_unit}}</div>
+                                                <div class="workordersInformation">{{items.usageUnit}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid> 
+                                </div>
+                                <div class="padding-left_5 padding-right_5">
+                                   <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{materials_quantity}}</div>
+                                                <div class="workordersInformation">{{items.observationName}}</div>
+                                            </ion-col>
+                                              <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{materials_app_method}}</div>
+                                                <div class="workordersInformation">{{items.applicationMethodName}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid> 
+                                </div>
+                                <div class="padding-left_5 padding-right_5">
+                                   <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{materials_app_Rate}}</div>
+                                                <div class="workordersInformation">{{items.applicationRate}}</div>
+                                            </ion-col>
+                                              <ion-col size="6" class="text-align_start">
+                                                <div class="workEventName">{{materials_equipment_name}}</div>
+                                                <div class="workordersInformation">{{items.equipmentName}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid> 
+                                </div>
+                                <div class="padding-left_5 padding-right_5">
+                                   <ion-grid style="padding:0px">
+                                        <ion-row style="padding:0px">
+                                            <ion-col size="4" class="text-align_start">
+                                                <div class="workEventName">{{materials_locations}}</div>
+                                                <div class="workordersInformation">{{items.locations}}</div>
+                                            </ion-col>
+                                              <ion-col size="4" class="text-align_start">
+                                                <div class="workEventName">{{materials_target_ests}}</div>
+                                                <div class="workordersInformation">{{items.targetPests}}</div>
+                                            </ion-col>
+                                            <ion-col size="4" class="text-align_start">
+                                                <div class="workEventName">{{materials_active_ingredients}}</div>
+                                                <div class="workordersInformation">{{items.activeIngredients}}</div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid> 
+                                </div>
+                            </ion-col>
+                            <ion-col size="1" class="text-align_end">
+                             	<ion-icon name="ellipsis-horizontal-outline" id="popover-button_{{i}}" class="menuIcon"></ion-icon>
+                                <ion-popover trigger="popover-button_{{i}}" [dismissOnSelect]="true">
+                                  <ng-template>
+                                    <ion-content>
+                                      <ion-list>
+                                        <ion-item [button]="true" [detail]="false" (click)="functionMaterialsEdit(items.matId);">{{materials_options_One}}</ion-item>
+                                        <ion-item [button]="true" lines="none"  [detail]="false" (click)="functionMaterialsDelete(items.itemId);">{{materials_options_tow}}</ion-item>
+                                      </ion-list>
+                                    </ion-content>
+                                  </ng-template>
+                                </ion-popover>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </div>
+        </div>
+         <div slot="fixed" class="divButtonClass">
+              <ion-grid style="padding:0px">
+                <ion-row style="padding:0px">
+                    <ion-col size="6" class="text-align_start">
+                        <div>
+            				<ion-button class="width_50_px hight_50_px" mode="ios" (click)="functionEndInspectionPoint(inspId)"><ion-icon name="checkmark-done-outline" class="addIconData"></ion-icon></ion-button>
+                        </div>
+                    </ion-col>
+                      <ion-col size="6" class="text-align_end">
+                       <div>
+            				<ion-button mode="ios" class="width_50_px hight_50_px" (click)="functionMaterialsAdd(inspId,inspctionType)"><ion-icon name="add" class="addIconData"></ion-icon></ion-button>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> 
+        </div>
+         <div *ngIf="materials==0">
+            <div class="divIconNoOrders">
+                <img src="../../assets/images/noUse.png" class="imageIcon">
+            </div>
+            <div class="errorNoDataLarge">{{error_materials_small}}</div>
+            <div class="errorNoDataSmall">{{error_materials_larg}}</div>
+        </div>
+    </div>
+</ion-content>

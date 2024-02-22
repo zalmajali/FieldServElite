@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+   <form style="display: contents;" (ngSubmit)="functionAddNewPlants()">	
+      <div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorPlantsName}}">
+                <ion-select interface="popover" placeholder="{{select}}" value="{{plantsName}}" label="{{plants_name}}" (ionChange)="selectPlantsName($event)" toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnPlantsOpArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorPlantsName == 0">{{plants_name_add}}</div>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorAmount}}" lines="none">
+            	<ion-input type="text" label="{{plants_amount}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="amount" (ionInput)="checkAmount($event)"></ion-input>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorAmount == 0">{{plants_amount_add}}</div>
+        </div>
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" disabled="{{!isdisabled}}" (click)="functionAddNewPlants()">{{add_plants}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

@@ -1,0 +1,60 @@
+ion-content{
+	--background:#f4f6f9 !important;
+	background:#f4f6f9 !important;
+		--keyboard-offset: 0 !important;
+}
+.iconStyle{
+	font-size:30px;
+	color:#ffffff;
+}
+.backLogin{
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	box-shadow: 0px 10px 15px 10px rgba(0, 0, 0, 0.15);
+	background-color: rgba(255, 255, 255, 0.45); 
+	border-radius: 0.5rem;  
+	overflow: hidden;
+	width: auto;
+	max-width: 90%;
+	text-align: center;
+	margin: 40px auto;
+}
+.imageLogo{
+	width:50%;
+}
+.iconAt{
+	font-size:25px;
+	color:#FF7901 !important;
+	margin-top: 5px;
+    margin-bottom: 5px;
+	margin-inline-end:15px;
+	margin-inline-start:0px;
+}
+.iconPass{
+	font-size:25px;
+	color:#FF7901 !important;
+	margin-top: 5px;
+    margin-bottom: 5px;
+	margin-inline-end:0px;
+	margin-inline-start:0px;
+}
+.forgetPassword{
+	text-align:start;
+	font-size:14px;
+	color:#FF7901;
+	margin-left:20px;
+	margin-right:20px
+}
+/*all data form*/
+ion-select {
+	--placeholder-color:#b6b6b5;
+	--placeholder-opacity:1;
+	color:#b6b6b5 !important;
+	font-size:14px;
+}
+ion-input{
+	--placeholder-color:#b6b6b5;
+	--placeholder-opacity:1;
+	color:#b6b6b5;
+	font-size:14px;
+}

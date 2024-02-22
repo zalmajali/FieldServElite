@@ -1,0 +1,63 @@
+ion-content{
+	--background:#f4f6f9;
+	background:#f4f6f9;
+	--keyboard-offset: 0 !important;
+}
+.iconStyle{
+	font-size:30px;
+	color:#ffffff;
+}
+/*all data form*/
+.ionItemStyleSmall{
+	border-radius: 8px;
+    border:none;
+	--padding-start:8px;
+	--inner-padding-end:8px;
+	background:#ffffff;
+	--background:#ffffff;
+	--min-height:35px;
+}
+ion-select {
+	--placeholder-color:#FF7901;
+	--placeholder-opacity:1;
+	color:#FF7901 !important;
+	font-size:14px;
+	min-height:25px;
+}
+ion-select::part(icon) { 
+	color: #FF7901 !important;
+	opacity: 1;
+}
+.workordersName{
+	background: white;
+	border-radius: 10px;
+	margin: 0.5rem !important;
+	padding: 7px;
+	box-shadow: 0 0 15px 0 rgba(128, 128, 128, 0.39);
+	cursor: pointer;
+}
+.infoIcon{
+	font-size:17px;
+	color:#FF7901;
+}
+.workordersInformation{
+	font-size:14px;
+}
+.menuIcon{
+	font-size:25px;
+	color:#FF7901;
+}
+.buttonScan {
+	margin-top:0px;
+    --background: #FF7901;
+    --background-activated: #f47920;
+    --background-activated-opacity: #f47920;
+    --color-activated: black;
+    --ripple-color: black;
+    --border-radius: 8px;
+    min-height: 10px;
+    --padding-top: 9px;
+    --padding-bottom: 9px;
+    --padding-start: 0em;
+    --padding-end: 0em;
+}

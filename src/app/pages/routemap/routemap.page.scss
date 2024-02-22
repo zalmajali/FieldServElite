@@ -1,0 +1,32 @@
+ion-content{
+	--background:#f4f6f9;
+	background:#f4f6f9;
+	--keyboard-offset: 0 !important;
+}
+.iconStyle{
+	font-size:30px;
+	color:#ffffff;
+}
+/*all data form*/
+.map {
+	position: relative;
+}
+.divIconNoOrders{
+	text-align: center;
+    margin-top: 25vh;
+}
+.errorNoDataLarge{
+	text-align: center;
+    color: #000001;
+    font-size: 17px;
+	margin-top: 1vh;
+}
+.errorNoDataSmall{
+	text-align: center;
+    color: #000001;
+    font-size: 14px;
+	margin-top: 1vh;
+}
+.imageIcon{
+	width:25%
+}

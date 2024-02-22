@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+   <form style="display: contents;" (ngSubmit)="functionCompleteTask()">	
+      <div>
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorProvidedName}}">
+                <ion-select interface="popover" placeholder="{{select}}" label="{{provided_name}}" (ionChange)="selectProvidedName($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnProvidedArray" value="{{items.id}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorProvidedName == 0">{{provided_name_add}}</div>
+        </div>
+         <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle {{errorEmployeeName}}">
+                <ion-select interface="popover" placeholder="{{select}}" label="{{employee_name}}" (ionChange)="selectEmployeeName($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnRouteEmployeeArray;let i=index" value="{{items.id}}-{{i}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorEmployeeName == 0">{{employee_name_add}}</div>
+        </div>
+         <div class="margin_10" class="{{hide}}">
+         <div class="workEventName">{{signature_technician}}</div>
+            <ion-item lines="none" class="ionItemStyle {{errorTecSignature}}">
+                <canvas #canvasElTec (touchstart)="startDrawingTec($event)" (touchmove)="moved($event)" style="width: 100%;"></canvas>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorTecSignature == 0">{{signature_technician_add}}</div>
+        </div>
+        
+         <div class="margin_10" *ngIf="selectUserImageSignature!=0">
+         <div class="workEventName">{{signature_technician}}</div>
+            <img src="{{imageLinkData}}" style="width:100%">
+        </div>
+        
+        <div class="margin_10">
+            <ion-item lines="none" class="ionItemStyle ionItemStyleSuccess">
+                <ion-select interface="popover" placeholder="{{select}}" label="{{service_complaints}}" (ionChange)="selectComplaintsName($event)" toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnServiceComplaintsArray" value="{{items.name}}">{{items.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorReason}}" lines="none">
+ 				<ion-textarea placeholder="{{reason}}" [ngModelOptions]="{standalone: true}" (ionInput)="checkReason($event)" mode='ios' rows='4' [(ngModel)]="reasonVal"></ion-textarea>
+ 			</ion-item>
+            <div class="errorMessage" *ngIf="isErrorReason == 0">{{reason_add}}</div>
+        </div>
+        <div class="margin_10">
+         <div class="workEventName">{{signature_customer}}</div>
+            <ion-item lines="none" class="ionItemStyle {{errorCusomSignature}}">
+                <canvas #canvasElCusom (touchstart)="startDrawingCusom($event)" (touchmove)="moved($event)" style="width: 100%;"></canvas>
+            </ion-item>
+            <div class="errorMessage" *ngIf="isErrorCusomSignature == 0">{{signature_customer_add}}</div>
+        </div>
+    </div>
+    <div class="margin_20 text-align_center" *ngIf="showButton==1">
+    	<ion-button class="width_60_per" mode="ios" disabled="{{!isdisabled}}" (click)="functionCompleteTask()">{{save}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

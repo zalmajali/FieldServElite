@@ -1,0 +1,55 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" menuId="first"  type="overlay" [side]="menuDirection" class="my-custom-menu">
+      <ion-content>
+        <ion-list id="labels-list">
+          <ion-list-header>
+          <div style="margin-top: 10px;width:100%;text-align:center">
+          	<img slot="end" src="../../assets/images/logo.png" style="width: 125px">
+          </div>
+          </ion-list-header>
+          	<div *ngFor="let pageOne of appPagesfirst; let i = index">
+            	<ion-menu-toggle auto-hide="false">
+                    <ion-item class="menuListItem" lines="none" [ngStyle]="{'direction': dir}" (click)="functionOpenPage(pageOne.url)" >
+                        <ion-label> <ion-icon name="{{pageOne.icon}}" class="iconLabel"></ion-icon> {{pageOne.title}}</ion-label><ion-icon name="chevron-forward" class="iconStyleArrow"></ion-icon>
+                    </ion-item>
+                </ion-menu-toggle>
+                <div class="spacingLine"></div>
+            </div>
+         </ion-list>
+      </ion-content>
+    </ion-menu>
+     <ion-menu contentId="main-content" menuId="last"  type="overlay" [side]="menuDirection" class="my-custom-menu">
+      <ion-content>
+        <ion-list id="labels-list">
+          <ion-list-header>
+          <div style="margin-top: 10px;width:100%;text-align:center">
+          	<img slot="end" src="../../assets/images/logo.png" style="width: 125px">
+          </div>
+          </ion-list-header>
+        <div style="width:100%;">
+            <div *ngFor="let pageOne of appPagesLast; let i = index">
+                <div *ngIf = "pageOne.type == 0">
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item class="menuListItem" lines="none" [ngStyle]="{'direction': dir}" (click)="functionOpenPage(pageOne.url)" >
+                            <ion-label> <ion-icon name="{{pageOne.icon}}" class="iconLabel"></ion-icon> {{pageOne.title}}</ion-label><ion-icon name="chevron-forward" class="iconStyleArrow"></ion-icon>
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <div class="spacingLine"></div>
+                </div>
+                <div *ngIf="pageOne.type == 1">
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item class="menuListItem" lines="none" [ngStyle]="{'direction': dir}" (click)="signOut()" >
+                            <ion-label> <ion-icon name="{{pageOne.icon}}" class="iconLabel"></ion-icon> {{pageOne.title}}</ion-label><ion-icon name="chevron-forward" class="iconStyleArrow"></ion-icon>
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <div class="spacingLine"></div>
+                </div>
+            </div>
+        </div>
+         </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content" dir="{{dir}}"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

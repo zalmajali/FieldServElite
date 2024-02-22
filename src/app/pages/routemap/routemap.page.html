@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}" *ngIf="showNotificationIcon == 1">
+       <div><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+<div id="map" style="height:100%;" *ngIf="inDayes == 1 && checkRoute==0 && geolocation==1"></div>
+<div *ngIf="inDayes != 1 || checkRoute==1 || geolocation==0">
+	<div class="divIconNoOrders">
+        <img src="../../assets/images/noUse.png" class="imageIcon">
+    </div>
+    <div class="errorNoDataLarge">{{error_no_orders_large}}</div>
+    <div class="errorNoDataSmall">{{error_no_orders_small}}</div>
+</div>
+
+</ion-content>

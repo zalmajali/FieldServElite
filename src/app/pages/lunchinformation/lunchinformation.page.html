@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionOpenMenue()"><ion-icon name="menu" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+    <ion-title>{{pageTitle}}</ion-title>
+    <ion-buttons slot="{{menuDirectionTow}}" *ngIf="showNotificationIcon == 1">
+       <div><ion-icon name="notifications" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">  
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+   <form style="display: contents;" (ngSubmit)="functionAddLunchInformation()">	
+      <div>
+      	<div class="margin_10">
+            <ion-item class="ionItemStyle" lines="none">
+            	<ion-input type="text" label="{{start_lunch_title}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="startLunchTime"></ion-input>
+            	<ion-icon slot="end" class="barcode" name="time" (click)="functiondatePuckerStart()"> </ion-icon>
+            </ion-item>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle" lines="none">
+            	<ion-input type="text" label="{{end_lunch_title}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="endLunchTime"></ion-input>
+            	<ion-icon slot="end" class="barcode" name="time" (click)="functiondatePuckerEnd()"> </ion-icon>
+            </ion-item>
+        </div>
+        <div class="margin_10">
+            <ion-item class="ionItemStyle" lines="none">
+            	<ion-input type="text" label="{{duration_lunch_title}}" fill="solid" mode='ios' [ngModelOptions]="{standalone: true}" [(ngModel)]="lunchTimeDuration"></ion-input>
+            </ion-item>
+             <div class="errorMessage">{{duration_note}}</div>
+        </div>
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" (click)="functionAddLunchInformation()">{{start_lunch_add}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>

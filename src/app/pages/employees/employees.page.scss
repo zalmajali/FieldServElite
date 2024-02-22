@@ -1,0 +1,38 @@
+ion-content{
+	--background:#f4f6f9;
+	background:#f4f6f9;
+	--keyboard-offset: 0 !important;
+}
+.iconStyle{
+	font-size:30px;
+	color:#ffffff;
+}
+.callIcon{
+	font-size:20px;
+	color:#FF7901;
+}
+.divIconNoemployee{
+	text-align: center;
+    margin-top: 27vh;
+}
+.imageIcon{
+	width:25%
+}
+.errorNoDataLarge{
+	text-align: center;
+    color: #000001;
+    font-size: 17px;
+	margin-top: 1vh;
+}
+.errorNoDataSmall{
+	text-align: center;
+    color: #000001;
+    font-size: 14px;
+	margin-top: 1vh;
+}
+.buttonToTop{
+	margin-top:35%;
+}
+.employeeName{
+	color: #000001;
+}

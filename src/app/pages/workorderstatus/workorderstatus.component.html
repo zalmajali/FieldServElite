@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  	<ion-buttons slot="{{menuDirection}}">
+       <div (click)="functionClosePage()"><ion-icon name="close" class="iconStyle"></ion-icon></div>
+    </ion-buttons>
+        <ion-title *ngIf="type == 2">{{tasks_status_one_title}}</ion-title>
+        <ion-title *ngIf="type == 3">{{tasks_status_tow_title}}</ion-title>
+        <ion-title *ngIf="type == 4">{{tasks_status_three_title}}</ion-title>
+		<ion-title *ngIf="type == 5">{{tasks_status_for_title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+   <div class="padding-top_5 padding-left_5 padding-right_5">
+ <form style="display: contents;" (ngSubmit)="functionWorkOrderStatus()">	
+      <div>
+        <div class="margin_10" *ngIf="type==2">
+            <ion-item lines="none" class="ionItemStyle">
+                <ion-select interface="popover" placeholder="{{select}}" value="" label="{{reason_name}}" (ionChange)="selectReasonTow($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnStatusReasonsTowArray;let i=index" value="{{i}}">{{items.syb}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+         <div class="margin_10" *ngIf="type==3">
+            <ion-item lines="none" class="ionItemStyle">
+                <ion-select interface="popover" placeholder="{{select}}" label="{{reason_name}}" (ionChange)="selectReasonThree($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnStatusReasonsThreeArray;let i=index" value="{{i}}">{{items.syb}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+         <div class="margin_10" *ngIf="type==4">
+            <ion-item lines="none" class="ionItemStyle">
+                <ion-select interface="popover" placeholder="{{select}}" label="{{reason_name}}" (ionChange)="selectReasonFore($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnStatusReasonsForeArray;let i=index" value="{{i}}">{{items.syb}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+        <div class="margin_10" *ngIf="type==5">
+            <ion-item lines="none" class="ionItemStyle">
+                <ion-select interface="popover" placeholder="{{select}}" label="{{reason_name}}" (ionChange)="selectReasonFive($event)"  toggle-icon="chevron-down-outline" expanded-icon="chevron-up-outline" mode="ios">
+                    <ion-select-option *ngFor="let items of returnStatusReasonsFiveArray;let i=index" value="{{i}}">{{items.syb}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+         <div class="margin_10">
+            <ion-item class="ionItemStyle {{errorReason}}" lines="none">
+ 				<ion-textarea placeholder="{{reason}}" [ngModelOptions]="{standalone: true}" (ionInput)="checkReason($event)" mode='ios' rows='4' [(ngModel)]="reasonVal"></ion-textarea>
+ 			</ion-item>
+            <div class="errorMessage" *ngIf="isErrorReason == 0">{{reason_add}}</div>
+        </div>        
+    </div>
+    <div class="margin_20 text-align_center">
+    	<ion-button class="width_60_per" mode="ios" disabled="{{!isdisabled}}" (click)="functionWorkOrderStatus()">{{save}}</ion-button>
+    </div>
+    <button style="visibility:hidden" id="submit" ion-button type="submit" ></button>
+     </form>
+  </div>
+</ion-content>
